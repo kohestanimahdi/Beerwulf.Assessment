@@ -1,7 +1,7 @@
 # Beerwulf Developer Assessment
 We'd like to take you through our coding assessment that we created for our developer candidates. Thanks for taking your time to do this and we also made sure you don't spend more than 1 hour on this assessment.
 ## Once you complete the assessment
-You can use our skeleton for this assessment. For simplicity reasons, we prefer everything under web project but that doesn't prevent that you can still show your solution arthitecture skills by maintaining a clever scaffolding. You can zip the latest solution and send Drive/Dropbox/OneDrive link to us.
+You can use our skeleton for this assessment. For simplicity reasons, we prefer everything under web project but that shouldn't stop you from showing your solution arthitecture skills by maintaining a clever scaffolding. You can zip the latest solution and send Drive/Dropbox/OneDrive link to us.
 ## Coding Test
 At Beerwulf, we might want to experiment about a functionality on our product detail page to have product reviews by customers.
 Your test is to create API endpoints for reviews to perform:
