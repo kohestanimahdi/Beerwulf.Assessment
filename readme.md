@@ -8,6 +8,7 @@ Your test is to create API endpoints for reviews to perform:
 * Creating a new review on a specific product.
 * A summary of reviews on a specific product. (Summary consists of; average score on reviews, percentage of recommendation)
 * Listing all reviews on a specific product.
+
 For further context on this a review consists these informations:
 * Score (range 1-5)
 * Title of review
