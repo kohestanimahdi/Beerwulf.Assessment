@@ -2,7 +2,7 @@
 Thank you for taking the time to complete this coding assessment. We did some of the heavy lifting for you already by creating a project skeleton that you can use as a jumping off point. The assessment is purposefully simple but pay special mind to best practises, code clarity and write the code as best as you possibly can.
 
 ## Assessment details
-* Ensure you don't spend more than **1 hour** on this assessment;
+* Ensure you don't spend more than **2 hours** on this assessment;
 * Once you're done, zip the latest solution and send us the Google Drive, Dropbox, or OneDrive link;
 * Your code must compile and run - VERY IMPORTANT!
 
