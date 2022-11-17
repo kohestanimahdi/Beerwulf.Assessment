@@ -1,4 +1,5 @@
 ﻿using Review.Domain.Common;
+using Review.Domain.ProductAggregates.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
