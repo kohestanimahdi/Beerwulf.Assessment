@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Review.Infrastructure.Persistance.DataInitializer
+﻿namespace Review.Infrastructure.Persistance.DataInitializer
 {
-    internal class IDataInitializer
+    public interface IDataInitializer
     {
+        void InitializeData();
     }
 }

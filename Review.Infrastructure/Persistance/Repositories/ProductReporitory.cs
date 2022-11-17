@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Review.Domain.ProductAggregates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,9 @@ namespace Review.Infrastructure.Persistance.Repositories
         }
 
         public bool IsAnyExists()
-        => _dbContext.Products.Any();
+            => _dbContext.Products.Any();
+
+        public void AddRange(IEnumerable<Product> products)
+            => _dbContext.Products.AddRange(products);
     }
 }

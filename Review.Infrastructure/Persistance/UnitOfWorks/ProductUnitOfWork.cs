@@ -1,4 +1,5 @@
-﻿using Review.Infrastructure.Persistance.Repositories;
+﻿using Review.Domain.ProductAggregates;
+using Review.Infrastructure.Persistance.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,5 +26,14 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
 
         public bool IsAnyProductExists()
             => _productReporitory.IsAnyExists();
+
+        public Task AddProductsRange(IEnumerable<Product> products, bool saveNow = true, CancellationToken cancellationToken = default)
+        {
+            _productReporitory.AddRange(products);
+            if (saveNow)
+                return SaveChangesAsync(cancellationToken);
+
+            return Task.CompletedTask;
+        }
     }
 }
