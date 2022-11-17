@@ -21,5 +21,15 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="M:Review.API.Controllers.ReviewController.AddProductReview(System.Int32,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Getting the reviews of the product by pagination (to get allViews, set page and pageSize = 0)
+            </summary>
+            <param name="productId"></param>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

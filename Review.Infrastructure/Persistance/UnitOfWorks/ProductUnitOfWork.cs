@@ -15,12 +15,14 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly ProductReporitory _productReporitory;
+        private readonly ProductReviewReporitory _productReviewReporitory;
 
         public ProductUnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 
             _productReporitory = new(_dbContext);
+            _productReviewReporitory = new(_dbContext);
         }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -44,6 +46,12 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
         public Task<PaginationResponse<ProductListItemDto>> GetProductsAsListItemAsync(PaginationRequest paginationRequest, CancellationToken cancellationToken = default)
         {
             var products = _productReporitory.GetProductsAsListItem();
+            return products.GetAsPaginationAsync(paginationRequest, cancellationToken);
+        }
+
+        public Task<PaginationResponse<ProductReview>> GetProductReviewsByPaginationAsync(int productId, PaginationRequest paginationRequest, CancellationToken cancellationToken = default)
+        {
+            var products = _productReviewReporitory.GetReviewsOfProduct(productId);
             return products.GetAsPaginationAsync(paginationRequest, cancellationToken);
         }
     }

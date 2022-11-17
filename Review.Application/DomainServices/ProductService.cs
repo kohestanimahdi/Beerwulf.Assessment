@@ -4,9 +4,6 @@ using Review.Infrastructure.Persistance.Models.Common;
 using Review.Infrastructure.Persistance.Models.ProductAggregateDBModels;
 using Review.Infrastructure.Persistance.UnitOfWorks;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,6 +35,12 @@ namespace Review.Application.DomainServices
 
             var paginationRequest = new PaginationRequest(page, pageSize);
             return _productUnitOfWork.GetProductsAsListItemAsync(paginationRequest, cancellationToken);
+        }
+
+        public Task<PaginationResponse<ProductReview>> GetProductReviewByPaginationAsync(int productId, int page, int pageSize, CancellationToken cancellationToken = default)
+        {
+            var paginationRequest = new PaginationRequest(page, pageSize);
+            return _productUnitOfWork.GetProductReviewsByPaginationAsync(productId, paginationRequest, cancellationToken);
         }
     }
 }
