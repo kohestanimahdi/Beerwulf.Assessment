@@ -1,4 +1,6 @@
 ﻿using Review.Domain.ProductAggregates;
+using Review.Infrastructure.Persistance.Models.Common;
+using Review.Infrastructure.Persistance.Models.ProductAggregateDBModels;
 using Review.Infrastructure.Persistance.Repositories;
 using System;
 using System.Collections.Generic;
@@ -38,5 +40,11 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
 
         public Task<Product> GetProductByIdAsync(int id, CancellationToken cancellationToken = default) =>
             _productReporitory.GetByIdAsync(id, cancellationToken);
+
+        public Task<PaginationResponse<ProductListItemDto>> GetProductsAsListItemAsync(PaginationRequest paginationRequest, CancellationToken cancellationToken = default)
+        {
+            var products = _productReporitory.GetProductsAsListItem();
+            return products.GetAsPaginationAsync(paginationRequest, cancellationToken);
+        }
     }
 }

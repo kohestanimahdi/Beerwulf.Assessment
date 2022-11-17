@@ -4,5 +4,22 @@
         <name>Review.API</name>
     </assembly>
     <members>
+        <member name="M:Review.API.Controllers.ProductController.GetProductsAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            get the list of the product with its summary in pagination
+            </summary>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Review.API.Controllers.ReviewController.AddProductReview(Review.API.Models.ProductAggregateDtos.SubmitProductReviewRequest,System.Threading.CancellationToken)">
+            <summary>
+            submiting the review for one product (it's AllowAnonymout, but if we have authentication, this endpoint should have it, too)
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

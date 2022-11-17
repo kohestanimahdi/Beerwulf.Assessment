@@ -1,5 +1,7 @@
 ﻿using Review.Domain.Exceptions;
 using Review.Domain.ProductAggregates;
+using Review.Infrastructure.Persistance.Models.Common;
+using Review.Infrastructure.Persistance.Models.ProductAggregateDBModels;
 using Review.Infrastructure.Persistance.UnitOfWorks;
 using System;
 using System.Collections.Generic;
@@ -30,5 +32,12 @@ namespace Review.Application.DomainServices
             await _productUnitOfWork.SaveChangesAsync(cancellationToken);
         }
 
+        public Task<PaginationResponse<ProductListItemDto>> GetProductsAsListItemAsync(int page, int pageSize, CancellationToken cancellationToken = default)
+        {
+            //TODO We can add cache in this like to prevent request to the database for getting the list of the products => the key of the cache => ($"ProductsAsItem-{page}-{pageSize}")
+
+            var paginationRequest = new PaginationRequest(page, pageSize);
+            return _productUnitOfWork.GetProductsAsListItemAsync(paginationRequest, cancellationToken);
+        }
     }
 }

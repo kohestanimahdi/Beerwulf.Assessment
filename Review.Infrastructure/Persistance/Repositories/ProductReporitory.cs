@@ -1,4 +1,7 @@
-﻿using Review.Domain.ProductAggregates;
+﻿using Microsoft.EntityFrameworkCore;
+using Review.Domain.ProductAggregates;
+using Review.Domain.ProductAggregates.Enums;
+using Review.Infrastructure.Persistance.Models.ProductAggregateDBModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +27,20 @@ namespace Review.Infrastructure.Persistance.Repositories
 
         public Task<Product> GetByIdAsync(int id, CancellationToken cancellationToken = default)
              => _dbContext.Products.FindAsync(new object[] { id }, cancellationToken).AsTask();
+
+        public IQueryable<ProductListItemDto> GetProductsAsListItem()
+            => _dbContext.Products
+            .Include(i => i.Reviews)
+            .Select(product => new ProductListItemDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                AverageScore = product.Reviews.Any() ? product.Reviews.Where(p => p.Status == ProductReviewStatuses.Accepted).Average(review => review.Score) : 0,
+                RecommendationPercentage = product.Reviews.Any(p => p.Status == ProductReviewStatuses.Accepted) ?
+                                        (int)((product.Reviews.Count(review => review.IsRecommended && review.Status == ProductReviewStatuses.Accepted) /
+                                    product.Reviews.Count(p => p.Status == ProductReviewStatuses.Accepted)) * 100) : 0
+            }).AsNoTracking();
     }
 }
