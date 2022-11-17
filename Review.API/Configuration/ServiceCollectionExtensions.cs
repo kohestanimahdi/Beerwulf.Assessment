@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Review.Infrastructure.Persistance;
 using System;
 using System.IO;
 using System.Reflection;
@@ -7,6 +9,12 @@ namespace Review.API.Configuration
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection WithDbContext(this IServiceCollection services)
+            => services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("ReviewDataBase");
+            });
+
         public static IServiceCollection WithSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>

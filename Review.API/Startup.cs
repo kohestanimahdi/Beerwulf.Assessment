@@ -25,6 +25,8 @@ namespace Review.API
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             services.WithSwagger();
+
+            services.WithDbContext();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
