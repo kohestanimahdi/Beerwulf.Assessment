@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Review.Infrastructure.Persistance;
+using Review.Infrastructure.Persistance.DataInitializer;
+using Review.Infrastructure.Persistance.UnitOfWorks;
 using System;
 using System.IO;
 using System.Reflection;
@@ -31,5 +33,18 @@ namespace Review.API.Configuration
 
             return services;
         }
+
+        public static IServiceCollection WithUnitOfWorks(this IServiceCollection services)
+        {
+            services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
+            return services;
+        }
+
+        public static IServiceCollection WithDataInitializerServices(this IServiceCollection services)
+        {
+            services.AddScoped<IDataInitializer, ProductDataInitializer>();
+            return services;
+        }
+
     }
 }
