@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Review.API.Configuration.Filters;
 using Review.API.Models.Common;
-using Review.Application.DomainServices;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Review.Infrastructure.Persistance.Models.Common;
 using Review.API.Models.ProductAggregateDtos;
+using Review.Application.DomainServices;
 using Review.Domain.Exceptions;
+using Review.Infrastructure.Persistance.Models.Common;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Review.API.Controllers
 {

@@ -1,8 +1,8 @@
-﻿using Review.Domain.ProductAggregates.Enums;
+﻿using Microsoft.EntityFrameworkCore;
 using Review.Domain.ProductAggregates;
+using Review.Domain.ProductAggregates.Enums;
 using System;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace Review.Infrastructure.Persistance.Repositories
 {

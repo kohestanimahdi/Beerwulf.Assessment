@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Review.API.Models.Common;
 using Review.Domain.Common;
 using Review.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using System;
-using Microsoft.Extensions.Hosting;
 
 namespace Review.API.Configuration.Middlewares
 {

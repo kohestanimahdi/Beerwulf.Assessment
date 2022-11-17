@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Review.API.Configuration.Filters;
 using Review.API.Models.Common;
 using Review.API.Models.ProductAggregateDtos;
 using Review.Application.DomainServices;
 using Review.Infrastructure.Persistance.Models.Common;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Review.API.Controllers
 {

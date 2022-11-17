@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Review.Infrastructure.Persistance.DataInitializer;
-using Review.Infrastructure.Persistance;
 using Microsoft.Extensions.DependencyInjection;
+using Review.Infrastructure.Persistance;
+using Review.Infrastructure.Persistance.DataInitializer;
 
 namespace Review.API.Configuration
 {
