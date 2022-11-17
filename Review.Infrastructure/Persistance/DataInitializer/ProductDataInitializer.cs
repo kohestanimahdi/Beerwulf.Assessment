@@ -19,7 +19,7 @@ namespace Review.Infrastructure.Persistance.DataInitializer
                 return;
 
             var products = GetSampleProducts();
-            _productUnitOfWork.AddProductsRange(products);
+            _productUnitOfWork.AddProductsRange(products).GetAwaiter().GetResult();
         }
 
         private static IEnumerable<Product> GetSampleProducts()
