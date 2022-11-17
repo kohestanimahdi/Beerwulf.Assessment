@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Review.API", "Review.API\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Review.Domain", "Review.Domain\Review.Domain.csproj", "{8DC82E63-1A57-4272-9E04-810702458A6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Review.Infrastructure", "Review.Infrastructure\Review.Infrastructure.csproj", "{2650E84E-3DC3-4F04-AAD8-89685CA84517}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8DC82E63-1A57-4272-9E04-810702458A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DC82E63-1A57-4272-9E04-810702458A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DC82E63-1A57-4272-9E04-810702458A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2650E84E-3DC3-4F04-AAD8-89685CA84517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2650E84E-3DC3-4F04-AAD8-89685CA84517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2650E84E-3DC3-4F04-AAD8-89685CA84517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2650E84E-3DC3-4F04-AAD8-89685CA84517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
