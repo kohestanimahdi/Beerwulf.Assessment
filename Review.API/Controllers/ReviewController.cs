@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Review.API.Models.Common;
+using Review.API.Models.ProductAggregateDtos;
 
 namespace Review.API.Controllers
 {
@@ -10,15 +13,18 @@ namespace Review.API.Controllers
     [Route("api/[controller]")]
     public class ReviewController : Controller
     {
-        public ReviewController()
+        /// <summary>
+        /// submiting the review for one product (it's AllowAnonymout, but if we have authentication, this endpoint should have it, too)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ProducesResponseType(typeof(ApiResult<string>), 200)]
+        [ProducesResponseType(typeof(ApiResult<string>), 404)]
+        public async Task<IActionResult> AddProductReview([FromBody] SubmitProductReviewRequest request, CancellationToken cancellationToken = default)
         {
-
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            return Json("Hello world!");
+            return Ok("Your view is submitted successfully");
         }
     }
 }
