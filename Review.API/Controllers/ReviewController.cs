@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Review.API.Models.Common;
 using Review.API.Models.ProductAggregateDtos;
+using Review.Application.DomainServices;
 
 namespace Review.API.Controllers
 {
@@ -13,6 +14,12 @@ namespace Review.API.Controllers
     [Route("api/[controller]")]
     public class ReviewController : Controller
     {
+        private readonly IProductService _productService;
+
+        public ReviewController(IProductService productService)
+        {
+            _productService = productService ?? throw new ArgumentNullException(nameof(productService));
+        }
         /// <summary>
         /// submiting the review for one product (it's AllowAnonymout, but if we have authentication, this endpoint should have it, too)
         /// </summary>
@@ -24,6 +31,7 @@ namespace Review.API.Controllers
         [ProducesResponseType(typeof(ApiResult<string>), 404)]
         public async Task<IActionResult> AddProductReview([FromBody] SubmitProductReviewRequest request, CancellationToken cancellationToken = default)
         {
+            await _productService.AddProductReviewAsync(request.MapToProductView(), cancellationToken);
             return Ok("Your view is submitted successfully");
         }
     }

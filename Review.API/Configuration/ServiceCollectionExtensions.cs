@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Review.Application.DomainServices;
 using Review.Infrastructure.Persistance;
 using Review.Infrastructure.Persistance.DataInitializer;
 using Review.Infrastructure.Persistance.UnitOfWorks;
@@ -46,5 +47,10 @@ namespace Review.API.Configuration
             return services;
         }
 
+        public static IServiceCollection WithDomainServices(this IServiceCollection services)
+        {
+            services.AddScoped<IProductService, ProductService>();
+            return services;
+        }
     }
 }

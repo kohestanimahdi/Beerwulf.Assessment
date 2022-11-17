@@ -35,5 +35,8 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
 
             return Task.CompletedTask;
         }
+
+        public Task<Product> GetProductByIdAsync(int id, CancellationToken cancellationToken = default) =>
+            _productReporitory.GetByIdAsync(id, cancellationToken);
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Review.Infrastructure.Persistance.Repositories
@@ -20,5 +21,8 @@ namespace Review.Infrastructure.Persistance.Repositories
 
         public void AddRange(IEnumerable<Product> products)
             => _dbContext.Products.AddRange(products);
+
+        public Task<Product> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+             => _dbContext.Products.FindAsync(new object[] { id }, cancellationToken).AsTask();
     }
 }
