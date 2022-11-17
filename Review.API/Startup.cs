@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Review.API.Configuration;
+using Review.API.Configuration.Middlewares;
 
 namespace Review.API
 {
@@ -37,6 +38,8 @@ namespace Review.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.IntializeDatabase();
+
+            app.WithCustomExceptionHandler();
 
             if (env.IsDevelopment())
             {
