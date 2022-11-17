@@ -54,5 +54,8 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
             var products = _productReviewReporitory.GetReviewsOfProduct(productId);
             return products.GetAsPaginationAsync(paginationRequest, cancellationToken);
         }
+
+        public Task<ProductDetailResponseDto> GetProductDetailsAsync(int productId, CancellationToken cancellationToken = default)
+            => _productReporitory.GetDetailsByIdAsync(productId, cancellationToken);
     }
 }

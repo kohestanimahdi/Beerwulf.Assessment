@@ -42,5 +42,11 @@ namespace Review.Application.DomainServices
             var paginationRequest = new PaginationRequest(page, pageSize);
             return _productUnitOfWork.GetProductReviewsByPaginationAsync(productId, paginationRequest, cancellationToken);
         }
+
+        public Task<ProductDetailResponseDto> GetProductDetailsAsync(int productId, CancellationToken cancellationToken = default)
+        {
+            //TODO We can add cache in this like to prevent request to the database for getting => the key of the cache => ($"ProductDetails-{productId}")
+            return _productUnitOfWork.GetProductDetailsAsync(productId, cancellationToken);
+        }
     }
 }

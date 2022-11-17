@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Review.API.Configuration.Filters;
 using Review.API.Models.Common;
 using Review.API.Models.ProductAggregateDtos;
 using Review.Application.DomainServices;
@@ -13,6 +14,7 @@ using Review.Infrastructure.Persistance.Models.Common;
 namespace Review.API.Controllers
 {
     [ApiController]
+    [ApiResultFilter]
     [Route("api/[controller]")]
     public class ReviewController : Controller
     {
@@ -48,7 +50,7 @@ namespace Review.API.Controllers
         [HttpGet]
         [Route("OfProduct")]
         [ProducesResponseType(typeof(ApiResult<PaginationResponse<ProductReviewResponse>>), 200)]
-        public async Task<PaginationResponse<ProductReviewResponse>> AddProductReview([FromQuery, Required] int productId, [FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> AddProductReview([FromQuery, Required] int productId, [FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
         {
             var productViews = await _productService.GetProductReviewByPaginationAsync(productId, page, pageSize, cancellationToken);
             var result = new PaginationResponse<ProductReviewResponse>()
@@ -56,7 +58,7 @@ namespace Review.API.Controllers
                 Items = productViews.Items?.ConvertAll(product => new ProductReviewResponse(product)),
                 TotalCount = productViews.TotalCount
             };
-            return result;
+            return Ok(result);
         }
 
     }

@@ -7,6 +7,7 @@ using System.Threading;
 using System;
 using Review.Infrastructure.Persistance.Models.Common;
 using Review.API.Models.ProductAggregateDtos;
+using Review.Domain.Exceptions;
 
 namespace Review.API.Controllers
 {
@@ -22,6 +23,7 @@ namespace Review.API.Controllers
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
         }
 
+
         /// <summary>
         /// get the list of the product with its summary in pagination
         /// </summary>
@@ -31,7 +33,7 @@ namespace Review.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ApiResult<PaginationResponse<ProductListItemResponse>>), 200)]
-        public async Task<PaginationResponse<ProductListItemResponse>> GetProductsAsync([FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetProductsAsync([FromQuery] int page = 1, [FromQuery] int pageSize = 20, CancellationToken cancellationToken = default)
         {
             var products = await _productService.GetProductsAsListItemAsync(page, pageSize, cancellationToken);
             var result = new PaginationResponse<ProductListItemResponse>()
@@ -40,7 +42,27 @@ namespace Review.API.Controllers
                 TotalCount = products.TotalCount
             };
 
-            return result;
+            return Ok(result);
         }
+
+        /// <summary>
+        /// get the product and its reviews
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="NotFoundException"></exception>
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(typeof(ApiResult<ProductDetailResponse>), 200)]
+        public async Task<IActionResult> GetProductDetailsByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            var product = await _productService.GetProductDetailsAsync(id, cancellationToken);
+            if (product is null)
+                throw new NotFoundException("Product is not found");
+
+            var result = new ProductDetailResponse(product);
+            return Ok(result);
+        }
+
     }
 }

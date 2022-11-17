@@ -11,6 +11,7 @@ namespace Review.Infrastructure.Persistance.UnitOfWorks
     {
         Task AddProductsRange(IEnumerable<Product> products, bool saveNow = true, CancellationToken cancellationToken = default);
         Task<Product> GetProductByIdAsync(int id, CancellationToken cancellationToken = default);
+        Task<ProductDetailResponseDto> GetProductDetailsAsync(int productId, CancellationToken cancellationToken = default);
         Task<PaginationResponse<ProductReview>> GetProductReviewsByPaginationAsync(int productId, PaginationRequest paginationRequest, CancellationToken cancellationToken = default);
         Task<PaginationResponse<ProductListItemDto>> GetProductsAsListItemAsync(PaginationRequest paginationRequest, CancellationToken cancellationToken = default);
         bool IsAnyProductExists();
