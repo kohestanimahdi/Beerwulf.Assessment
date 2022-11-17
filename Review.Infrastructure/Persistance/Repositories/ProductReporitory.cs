@@ -39,8 +39,8 @@ namespace Review.Infrastructure.Persistance.Repositories
                 Description = product.Description,
                 AverageScore = product.Reviews.Any() ? product.Reviews.Where(p => p.Status == ProductReviewStatuses.Accepted).Average(review => review.Score) : 0,
                 RecommendationPercentage = product.Reviews.Any(p => p.Status == ProductReviewStatuses.Accepted) ?
-                                        (int)((product.Reviews.Count(review => review.IsRecommended && review.Status == ProductReviewStatuses.Accepted) /
-                                    product.Reviews.Count(p => p.Status == ProductReviewStatuses.Accepted)) * 100) : 0
+                                        (int)(product.Reviews.Count(review => review.IsRecommended && review.Status == ProductReviewStatuses.Accepted) * 1f /
+                                    product.Reviews.Count(p => p.Status == ProductReviewStatuses.Accepted) * 1f * 100) : 0
             }).AsNoTracking();
     }
 }
